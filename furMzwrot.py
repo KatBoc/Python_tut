@@ -1,32 +1,35 @@
-#petla, uzytkownik samoglowki wpisuje, 10s,
-#to do tablicy, tuple, pobierz date, zapisz do pliki w dokumentach, jesli cyfra to podzielne przez 3
+# petla, uzytkownik wpisuje wpisuje, 10s,
+# to do tablicy, z tego tuple, pobierz date, zapisz do pliki w dokumentach, samogloska / jesli cyfra to podzielne przez 3
 
-import time; # fixme - NO SEMICOLONS !
+f = open("C:\\Users\\MASTER\\Documents\\furMichal.txt", "w+")
 
-listForTuple = [] # fixme name of this variable should tell what it contains
-myTuple = () #fixme names
+import time
+def makingTuple(finalList, a):
+    digits = ('1', '2', '3', '4', '5', '6', '7', '8', '9','0')
+    vowels = ('a', 'o', 'i', 'e', 'u', 'y')
 
-listS=['a', 'o', 'i', 'e', 'u', 'y'] # fixme if this is immutable past the whole program - those lists could be tuples, name!
-listI=['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'] # fixme names!
-
-startF = time.time() #names!
-
-while (time.time() - startF < 10): # no need for parenthesis
-    a = input('wpisz jeden znak: ') # Case in Polish grammar - make nice-look messages for user, names
-    #if a in listS:s  fixme - what does this s do ? - test your program before sending to examine
-    if a in listS:
-        listForTuple.append(a)
-    elif a in listI:
+    if a in vowels:
+        finalList.append(a)
+    elif a in digits:
         if int(a) % 3 == 0:
-           listForTuple.append(a)
+            finalList.append(a)
 
-myTuple = tuple(listForTuple) # FIXME - NAMES !!
-print (myTuple) # TODO - did not ask for print
+functionStart = time.time()
+finalList = []
 
-localtime = time.asctime( time.localtime(time.time()) )
-print ("Local current time :", localtime) #todo -  did not ask for that
+while time.time() - functionStart < 10:
+    a = input('Put one sign: ')
+    makingTuple(finalList, a)
 
-#todo
+finalTuple = tuple(finalList)
+
+f.write("Elements in Tuple: ")
+for i in finalTuple:
+    f.write(str(i)+" ")
+
+localTime = time.asctime(time.localtime(time.time()))
+f.write("\nLocal time is: " + localTime)
+
 # this program steal user time to check symbols
 # move operational part after while() ...
 # make this whole program a one big func and run it on down of the file
