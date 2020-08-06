@@ -1,34 +1,41 @@
 # petla, uzytkownik wpisuje wpisuje, 10s,
 # to do tablicy, z tego tuple, pobierz date, zapisz do pliki w dokumentach, samogloska / jesli cyfra to podzielne przez 3
 
-f = open("C:\\Users\\MASTER\\Documents\\furMichal.txt", "w+")
-
 import time
-def makingTuple(finalList, a):
-    digits = ('1', '2', '3', '4', '5', '6', '7', '8', '9','0')
-    vowels = ('a', 'o', 'i', 'e', 'u', 'y')
 
-    if a in vowels:
-        finalList.append(a)
-    elif a in digits:
-        if int(a) % 3 == 0:
-            finalList.append(a)
+f = open("C:\\Users\\MASTER\\Documents\\furMichal.txt", "w+") #next time
 
-functionStart = time.time()
-finalList = []
 
-while time.time() - functionStart < 10:
-    a = input('Put one sign: ')
-    makingTuple(finalList, a)
+def veryfication(full_list, final_list):
 
-finalTuple = tuple(finalList)
+    all_digits = ('1', '2', '3', '4', '5', '6', '7', '8', '9','0')
+    all_vowels = ('a', 'o', 'i', 'e', 'u', 'y')
+    for sign in full_list:
+        if sign in all_vowels:
+            final_list.append(sign)
+        elif sign in all_digits:
+            if int(sign) % 3 == 0:
+                final_list.append(sign)
+
+final_list = []
+full_list = []
+
+start_time = time.time()
+
+while time.time() - start_time < 10:
+    sign = input('Put one sign: ')
+    full_list.append(sign)
+
+veryfication(full_list, final_list)
+
+final_tuple = tuple(final_list)
 
 f.write("Elements in Tuple: ")
-for i in finalTuple:
-    f.write(str(i)+" ")
+for element in final_tuple:
+    f.write(str(element)+" ")
 
-localTime = time.asctime(time.localtime(time.time()))
-f.write("\nLocal time is: " + localTime)
+local_time = time.asctime(time.localtime(time.time()))
+f.write("\nLocal time is: " + local_time)
 
 # this program steal user time to check symbols
 # move operational part after while() ...
